@@ -1,0 +1,29 @@
+# #: kivy 1.9.0
+<HomeScreen>:
+    random_label: random_label
+    BoxLayout:
+        orientation: 'vertical'
+        Label:
+            text: "Choose an exercise"
+            font_size: 64
+            color: 0.25, 0.25, 0.65
+        Label:
+            id: random_label
+            text: "-"
+            font_size: 64
+        Button:
+            text: "Interval"
+            font_size: 32
+            size: 100, 50
+            on_press: root.switch_screen('interval')
+
+# <HomeScreen>:
+#     BoxLayout:
+#         Button:
+#             text: 'Goto settings'
+#             on_press: root.manager.current = 'settings'
+#         Button:
+#             text: 'Quit'
+#     # Button:
+#     #     text: 'Go to Interval Screen'
+#     #     on_release: root.switch_to_interval()
