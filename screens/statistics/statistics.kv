@@ -1,0 +1,24 @@
+# statistics.kv
+
+<StatisticsScreen>:
+    BoxLayout:
+        Label:
+            text: 'Statistics Screen'
+            font_size: 14
+            color: 0.25, 0.25, 0.65
+        BoxLayout:
+            orientation: 'vertical'
+            ScrollView:
+                BoxLayout:
+                    orientation: 'vertical'
+                    Label:
+                        text: 'Answers from Database:'
+                        font_size: 14
+                        color: 0.25, 0.25, 0.65
+                    Label:
+                        text: '\n'.join([str(element.answer) for element in root.get_answers_from_db()])
+                        font_size: 14
+                        color: 0.25, 0.25, 0.65
+            Button:
+                text: 'Back'
+                on_release: root.back_to_home()  # Bind the button to a method to navigate back to the main screen

@@ -16,6 +16,9 @@
             font_size: 32
             size: 100, 50
             on_press: root.switch_screen('interval')
+        Button:
+            text: 'Go to Statistics'
+            on_release: root.go_to_statistics()  # Bind the button to the go_to_statistics() method
 
 # <HomeScreen>:
 #     BoxLayout:

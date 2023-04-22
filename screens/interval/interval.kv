@@ -1,6 +1,9 @@
 <IntervalScreen>:
     BoxLayout:
         Button:
+            text: 'Back'
+            on_release: root.back_to_home()
+        Button:
             on_release: root.play_sound()
             size: '50dp', '50dp'
             pos_hint: {'center_x': 0.5}
