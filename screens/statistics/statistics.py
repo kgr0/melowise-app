@@ -11,5 +11,5 @@ class StatisticsScreen(Screen):
 
     def get_answers_from_db(self):
         self.db = DatabaseHandler() 
-        list = self.db.get_all_answers()
+        list = self.db.get_all_questions()
         return list

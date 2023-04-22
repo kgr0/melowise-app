@@ -4,15 +4,23 @@ from sqlalchemy.orm import sessionmaker
 
 Base = declarative_base()
 
-class Answer(Base):
-    __tablename__ = 'answers'
+class Question(Base):
+    __tablename__ = 'questions'
     id = Column(Integer, primary_key=True)
-    question_id = Column(Integer)
-    answer = Column(Boolean)
+    answer_1 = Column(String)
+    answer_2 = Column(String)
+    answer_3 = Column(String)
+    answer_4 = Column(String)
+    correct_answer = Column(String)
+    user_answer = Column(String)
 
-    def __init__(self, question_id, answer):
-        self.question_id = question_id
-        self.answer = answer
+    def __init__(self, question_dto):
+        self.answer_1 = question_dto.answer_1
+        self.answer_2 = question_dto.answer_2
+        self.answer_3 = question_dto.answer_3
+        self.answer_4 = question_dto.answer_4
+        self.correct_answer = question_dto.correct_answer
+        self.user_answer = question_dto.user_answer
 
 engine = create_engine('sqlite:///melowise.db')
 

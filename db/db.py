@@ -1,9 +1,9 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import Session
 from sqlalchemy.orm import sessionmaker
-from db.models import Answer, Base
+from db.models import Question, Base
 from sqlalchemy import create_engine
-from .models import Answer
+from .models import Question
 
 # Create the session
 
@@ -14,28 +14,19 @@ class DatabaseHandler:
         self.session = Session(self.engine)
         self.Session = sessionmaker(bind=self.engine)
 
-    def save_answer(self, question_id, answer):
-        answer_model = Answer(question_id=question_id, answer=answer)
-        self.session.add(answer_model)
+    def save_question(self, question_dto):
+        question_model = Question(question_dto=question_dto)
+        self.session.add(question_model)
         self.session.commit()
         self.close()
     
-    def get_all_answers(self):
+    def get_all_questions(self):
         session = self.Session()
         try:
-            answers = session.query(Answer).all()
+            questions = session.query(Question).all()
         finally:
             session.close()
-        return answers
-
-    def get_answers_from_db(self):
-        print('aaaaaaaaaa')
-        Session = sessionmaker()
-        session = Session.configure(bind=self.engine)
-        answers = session.query(Answer).all()
-        session.close()
-        print('bbbbbbb')
-        return answers
+        return questions
 
     def close(self):
         self.session.close()
