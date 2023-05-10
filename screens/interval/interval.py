@@ -6,6 +6,11 @@ from db.db import DatabaseHandler
 from db.dtos import QuestionDTO
 import random
 from kivy.properties import StringProperty
+from kivy.core.audio import SoundLoader
+from pydub import AudioSegment
+import numpy as np
+from core.sound_generator import generate
+import constants
 
 class IntervalScreen(Screen):
 
@@ -27,42 +32,49 @@ class IntervalScreen(Screen):
 
     def __init__(self, **kwargs):
         super(IntervalScreen, self).__init__(**kwargs)
-        self.db = DatabaseHandler()  # Create an instance of DatabaseHandler with the database name
+        self.db = DatabaseHandler()
         self.answers = []
         self.load_question()
 
     def load_question(self):
-        self.sound = SoundLoader.load('././sounds/piano_c.mp3') # Load the sound file
-        self.interval = random.choice(self.INTERVALS)
+        #self.sound = SoundLoader.load('././sounds/piano_c.mp3') # Load the sound file
+        random_key, random_value = random.choice(list(constants.INTERVALS.items()))
+        self.interval = random.choice(random_key)
+        root_note = random.choice(constants.PITCHES) + "4"
+        
+        self.generate_sound(root_note, random_value)
 
-        self.answers = []  # Set the answers to an empty list before generating the new answers
+        self.answers = []
         self.answers = self.generate_answers(self.interval)
         self.answer_1 = self.answers[0];
         self.answer_2 = self.answers[1];
         self.answer_3 = self.answers[2];
         self.answer_4 = self.answers[3];
         pass
+    
+
+    def generate_sound(self,root_note, interval ):
+        generate(root_note, interval)
+        sound = AudioSegment.from_wav('././data/sound_1.wav')
+        #sound.export('././data/melody.mp3', format='mp3') # Export to mp3 to avoid platform-specific issues
+        self.sound = SoundLoader.load('././data/sound_1.wav')
 
     def play_sound(self):
-        if self.sound:  # Check if the sound is loaded successfully
-            self.sound.play()  # Play the sound
-
-    INTERVALS = ['minor second', 'major second', 'minor third', 'major third',
-             'perfect fourth', 'augmented fourth', 'diminished fifth',
-             'perfect fifth', 'minor sixth', 'major sixth', 'minor seventh',
-             'major seventh', 'perfect octave']
+        if self.sound:
+            self.sound.play()
 
     def generate_answers(self,correct_answer):
         answers = [correct_answer]
         while len(answers) < 4:
-            answer = random.choice(self.INTERVALS)
+            random_key, random_value = random.choice(list(constants.INTERVALS.items()))
+            answer = random.choice(random_key)
             if answer not in answers:
                 answers.append(answer)
         random.shuffle(answers)
         return answers
 
     def submit_answer(self, user_answer):     
-        correct_answer = self.interval  # Replace with your actual correct answer
+        correct_answer = self.interval
         if user_answer == correct_answer:    
             result_message = "Correct!"     
         else:
