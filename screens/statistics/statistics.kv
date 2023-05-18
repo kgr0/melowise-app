@@ -12,7 +12,11 @@
             size_hint_y: .8
             orientation: 'vertical'
             BoxLayout:
-                id: chart_container
+                id: pie_chart_container
+                size_hint_y: .8
+                pos_hint: {"top":1}
+            BoxLayout:
+                id: bars_chart_container
                 size_hint_y: .8
                 pos_hint: {"top":1}
             Button:
