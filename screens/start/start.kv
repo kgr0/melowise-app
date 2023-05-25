@@ -1,0 +1,13 @@
+#:import colors colors
+
+<StartScreen>:
+    canvas.before:
+        Color:
+            rgb: colors.MAIN_RGBA
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    Label:
+        text: 'Melowise'
+        color:colors.LIGHT_RGBA
+        font_size: 30

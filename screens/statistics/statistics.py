@@ -34,8 +34,7 @@ class StatisticsScreen(Screen, FloatLayout):
             len([obj for obj in answers if obj.user_answer == obj.correct_answer]),
             len([obj for obj in answers if obj.user_answer != obj.correct_answer])
         ]       
-        print(values)
-        colors = ['#5D9C59', '#DF2E38']
+        colors = ['#A4AA7E', '#D07F89']
         fig, ax = plt.subplots()
         ax.pie(values, labels=labels, colors=colors, autopct='%1.1f%%', textprops={'color':"w"})
         ax.set_title('Pie Chart')

@@ -1,24 +1,51 @@
 # #: kivy 1.9.0
+#:import colors colors
+
 <HomeScreen>:
-    random_label: random_label
     BoxLayout:
         orientation: 'vertical'
         Label:
             text: "Choose an exercise"
             font_size: 64
-            color: 0.25, 0.25, 0.65
-        Label:
-            id: random_label
-            text: "-"
-            font_size: 64
+            color: colors.MAIN_RGBA
+            size_hint_y: 0.4
         Button:
             text: "Interval"
             font_size: 32
             size: 100, 50
-            on_press: root.switch_screen('interval')
+            on_press: root.switch_screen('interval_settings')
+            background_normal: ''
+            background_color: colors.MAIN_RGBA
+            color: colors.LIGHT_RGBA
+            opacity: 1 if self.state == 'normal' else .5
+            allow_stretch: True
+            size_hint_y: 0.3
+            
         Button:
-            text: 'Go to Statistics'
-            on_release: root.go_to_statistics()  # Bind the button to the go_to_statistics() method
+            on_release: root.go_to_statistics()
+            background_normal: ''
+            background_color: colors.MAIN_RGBA
+            opacity: 1 if self.state == 'normal' else .5
+            pos_hint: {'center_x': 0.5}
+            size_hint_y: 0.3
+            BoxLayout:
+                #pos: self.parent.pos
+                x: self.parent.x + (self.parent.width/2 - self.width/2)
+                y: self.parent.y + (self.parent.height/2 - self.height/2)
+                #size: self.parent.size
+                orientation: 'horizontal'
+                Image:
+                    source: '././assets/statistics.png'
+                    size_hint_x: None
+                    width: 74
+                    pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                Label:
+                    size_hint_x: None
+                    #width: 100
+                    font_size: 20
+                    text: "Statistics"
+                    color: colors.LIGHT_RGBA
+                    pos_hint: {'center_x': 0.5, 'center_y': 0.5}
 
 # <HomeScreen>:
 #     BoxLayout:

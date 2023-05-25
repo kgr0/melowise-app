@@ -23,3 +23,6 @@
                 size_hint_y: .2
                 text: 'Back'
                 on_release: root.back_to_home()
+                background_normal: ''
+                background_color: colors.MAIN_RGBA
+                opacity: 1 if self.state == 'normal' else .5

@@ -36,7 +36,6 @@ def build_interval(root_note, interval_name):
 
     # Return the interval as a tuple containing the root note and second note
 
-    print(str(root_pitch), str(second_pitch))
     return str(second_pitch)
 
 def generate(root_note, interval):
