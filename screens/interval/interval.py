@@ -76,7 +76,7 @@ class IntervalScreen(Screen):
         if user_answer == correct_answer:    
             result_message = "Correct!"     
         else:
-            result_message = "Incorrect!"
+            result_message = f'Incorrect! The correct answer is {correct_answer}'
 
         self.db.save_question(question_dto=QuestionDTO(self.answers[0], self.answers[1], self.answers[2], self.answers[3], correct_answer, user_answer))  # Save the answer in the database
 
