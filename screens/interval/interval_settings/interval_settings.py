@@ -1,7 +1,7 @@
 from kivy.uix.screenmanager import Screen
 from kivy.uix.recycleboxlayout import RecycleBoxLayout
 from kivy.uix.checkbox import CheckBox
-
+import constants
 
 class CustomCheckBox(CheckBox):
     pass
@@ -13,23 +13,40 @@ class CustomBoxLayout(RecycleBoxLayout):
         
 class IntervalSettingsScreen(Screen):
 
-    checkbox_data = [
-    {"text": "Checkbox 1", "active": False},
-    {"text": "Checkbox 2", "active": True},
-    {"text": "Checkbox 3", "active": False},
-    # Add more checkbox data as needed
+    selected_intervals = [
+        "Unison",
+        "Minor second",
+        "Major second",
+        "Minor third",
+        "Major third",
+        "Perfect fourth",
+        "Augmented fourth",
+        "Diminished fifth",
+        "Perfect fifth",
+        "Minor sixth",
+        "Major sixth",
+        "Minor seventh",
+        "Major seventh",
+        "Octave"
     ]
 
     def __init__(self, **kwargs):
         super(IntervalSettingsScreen, self).__init__(**kwargs)
 
-    def checkbox_click(self, instance, value):
-        if value is True:
-            print("Checkbox Checked")
+    def select_intervals(self, instance, value, text):
+        if text == 'Select/Unselect all':
+            print(self.ids)
+            for interval in constants.INTERVALS.keys():
+                self.ids[interval].active = value
+            return
+        if value == True:
+            self.selected_intervals.append(text)
         else:
-            print("Checkbox Unchecked")
+            self.selected_intervals.remove(text)
 
     def go_to_exercise(self):
+        interval_screen = self.manager.get_screen('interval')
+        interval_screen.selected_intervals = self.selected_intervals
         self.manager.current = 'interval'
 
     def back_to_home(self):

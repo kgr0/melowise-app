@@ -1,52 +1,91 @@
 <CustLabel@ButtonBehavior+Label>:
     color: .761, .190, .810, 1
     size_hint_x: .80
-    font_size:30
+    font_size:14
 <CustCheckBox@CheckBox>:
     color:.294, .761, .623
     size_hint_x: .20
 <LabelCheckBox@BoxLayout>:
     text: ''
-    group: ''
-
+    active: True
     CustCheckBox:
         id: cb
-        #group: root.group
+        active: root.active
+        on_active: app.root.current_screen.select_intervals(self, self.active, root.text)
 
     CustLabel:
         on_press: cb._do_press()
         text: root.text
 
 <IntervalSettingsScreen>:
-    canvas.before:
-        Color:
-            rgba: 1, 1, 1, 1
-        Rectangle:
-            pos: self.pos
-            size: self.size
+    # canvas.before:
+    #     Color:
+    #         rgba: 1, 1, 1, 1
+    #     Rectangle:
+    #         pos: self.pos
+    #         size: self.size
     BoxLayout:
+        orientation: 'vertical'
         Button:
             text: 'Back'
             on_release: root.back_to_home()
             background_normal: ''
             background_color: colors.MAIN_RGBA
             opacity: 1 if self.state == 'normal' else .5
-            size_hint_y: 0.5
+            size_hint_y: 0.3
         Button:
             text: 'Start'
             on_release: root.go_to_exercise()
             background_normal: ''
             background_color: colors.MAIN_RGBA
             opacity: 1 if self.state == 'normal' else .5
-            size_hint_y: 0.5
-        # BoxLayout:
-        #     LabelCheckBox:
-        #         text:"option 1"
-        #         group: 'opts'
-        #     LabelCheckBox:
-        #         text:"option 1"
-        #         group: 'opts'
-        #     LabelCheckBox:
-        #         text:"option 1"
-        #         group: 'opts'
-        #         #on_active: root.checkbox_click(self, self.active)
+            size_hint_y: 0.3
+        LabelCheckBox:
+            id: Select_all
+            text:"Select/Unselect all"
+            size_hint_y: 0.4
+        GridLayout:
+            cols: 2
+            rows: 7
+            LabelCheckBox:
+                id: Unison
+                text:"Unison"
+            LabelCheckBox:
+                id: Minor second
+                text:"Minor second"
+            LabelCheckBox:
+                id: Major second
+                text:"Major second"
+            LabelCheckBox:
+                id: Minor third
+                text:"Minor third"
+            LabelCheckBox:
+                id: Major third
+                text:"Major third"
+            LabelCheckBox:
+                id: Perfect fourth
+                text:"Perfect fourth"
+            LabelCheckBox:
+                id: Augmented fourth
+                text:"Augmented fourth"
+            LabelCheckBox:
+                id: Diminished fifth
+                text:"Diminished fifth"
+            LabelCheckBox:
+                id: Perfect fifth
+                text:"Perfect fifth"
+            LabelCheckBox:
+                id: Minor sixth
+                text:"Minor sixth"
+            LabelCheckBox:
+                id: Major sixth
+                text:"Major sixth"
+            LabelCheckBox:
+                id: Minor seventh
+                text:"Minor seventh"
+            LabelCheckBox:
+                id: Major seventh
+                text:"Major seventh"
+            LabelCheckBox:
+                id: Octave
+                text:"Octave"

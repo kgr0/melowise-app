@@ -19,6 +19,8 @@ class IntervalScreen(Screen):
     answer_3 = StringProperty('')
     answer_4 = StringProperty('')
 
+    selected_intervals = constants.INTERVALS.keys()
+
     def on_answer_1(self, instance, value):
         self.ids.answer_1.text = value
     def on_answer_2(self, instance, value):
@@ -35,7 +37,8 @@ class IntervalScreen(Screen):
         self.load_question()
 
     def load_question(self):
-        (random_key, random_value) = random.choice(list(constants.INTERVALS.items()))
+        random_key = random.choice(list(self.selected_intervals))
+        random_value = constants.INTERVALS.get(random_key)
         self.interval = random_key
         root_note = random.choice(constants.PITCHES) + "4"
         
