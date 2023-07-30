@@ -9,8 +9,16 @@ from kivy.properties import StringProperty
 from kivy.core.audio import SoundLoader
 from core.sound_generator import generate
 import constants
+from kivy.lang import Builder
+
+from kivymd.app import MDApp
+from kivymd.uix.button import MDFlatButton
+from kivymd.uix.dialog import MDDialog
 
 class IntervalScreen(Screen):
+
+    dialog = None
+    theme_cls = None
 
     answers = ['1', '2', '3', '4']
 
@@ -35,6 +43,7 @@ class IntervalScreen(Screen):
         self.db = DatabaseHandler()
         self.answers = []
         self.load_question()
+        self.theme_cls = MDApp.get_running_app().theme_cls
 
     def load_question(self):
         random_key = random.choice(list(self.selected_intervals))
@@ -83,10 +92,28 @@ class IntervalScreen(Screen):
 
         self.db.save_question(question_dto=QuestionDTO(self.answers[0], self.answers[1], self.answers[2], self.answers[3], correct_answer, user_answer))  # Save the answer in the database
 
-        popup = Popup(title='Result', content=Label(text=result_message), size_hint=(None, None), size=(400, 200))
-        popup.open()
-
+        self.show_alert_dialog(result_message)
         self.load_question()
+
+    def show_alert_dialog(self, text):
+        if not self.dialog:
+            self.dialog = MDDialog(
+                text=text,
+                radius=[20, 7, 20, 7],
+                buttons=[
+                    MDFlatButton(
+                        text="OK",
+                        theme_text_color="Custom",
+                        text_color=self.theme_cls.primary_color,
+                        on_release=self.close_dialog,
+                    )
+                ],
+            )
+        self.dialog.open()
+
+    def close_dialog(self, instance):
+        if self.dialog:
+            self.dialog.dismiss()
     
     def back_to_home(self):
         self.manager.current = 'home'

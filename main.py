@@ -12,6 +12,13 @@ from kivy.core.window import Window
 
 from screens.statistics.statistics import StatisticsScreen
 
+from kivy.config import Config
+
+#set the window size to be resizable
+#Config.set('graphics', 'resizable', True)
+# Config.set('graphics', 'width', '828')
+# Config.set('graphics', 'height', '1792')
+
 kivy.require('1.9.0')
 
 Builder.load_file('screens/home/home.kv')
@@ -29,10 +36,12 @@ class MyApp(MDApp):
         sm.add_widget(StatisticsScreen(name='statistics'))
         sm.add_widget(StartScreen(name="start_screen"))
         sm.current = "start_screen"
-
-        Window.size = (Window.width, Window.height)
+        self.theme_cls.primary_palette = "Purple"
+        Window.size = (360   , 780  )
         
         self.title = 'Melowise'
+
+        
         return sm
 
 
