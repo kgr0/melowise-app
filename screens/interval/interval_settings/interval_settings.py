@@ -2,6 +2,7 @@ from kivy.uix.screenmanager import Screen
 from kivy.uix.recycleboxlayout import RecycleBoxLayout
 from kivy.uix.checkbox import CheckBox
 import constants
+from .. import values
 
 class CustomCheckBox(CheckBox):
     pass
@@ -35,7 +36,6 @@ class IntervalSettingsScreen(Screen):
 
     def select_intervals(self, instance, value, text):
         if text == 'Select/Unselect all':
-            print(self.ids)
             for interval in constants.INTERVALS.keys():
                 self.ids[interval].active = value
             return
@@ -47,6 +47,8 @@ class IntervalSettingsScreen(Screen):
     def go_to_exercise(self):
         interval_screen = self.manager.get_screen('interval')
         interval_screen.selected_intervals = self.selected_intervals
+        values.SELECTED_INTERVALS = self.selected_intervals
+        interval_screen.load_question()
         self.manager.current = 'interval'
 
     def back_to_home(self):

@@ -9,6 +9,7 @@ from kivy.properties import StringProperty
 from kivy.core.audio import SoundLoader
 from core.sound_generator import generate
 import constants
+from . import values
 from kivy.lang import Builder
 
 from kivymd.app import MDApp
@@ -42,11 +43,10 @@ class IntervalScreen(Screen):
         super(IntervalScreen, self).__init__(**kwargs)
         self.db = DatabaseHandler()
         self.answers = []
-        self.load_question()
         self.theme_cls = MDApp.get_running_app().theme_cls
 
     def load_question(self):
-        random_key = random.choice(list(self.selected_intervals))
+        random_key = random.choice(list(values.SELECTED_INTERVALS))
         random_value = constants.INTERVALS.get(random_key)
         self.interval = random_key
         root_note = random.choice(constants.PITCHES) + "4"
@@ -85,35 +85,34 @@ class IntervalScreen(Screen):
 
     def submit_answer(self, user_answer):     
         correct_answer = self.interval
-        if user_answer == correct_answer:    
+        if user_answer == correct_answer:
             result_message = "Correct!"     
         else:
-            result_message = f'Incorrect! The correct answer is {correct_answer}'
+            result_message = 'Incorrect! The correct answer is ' + correct_answer
 
         self.db.save_question(question_dto=QuestionDTO(self.answers[0], self.answers[1], self.answers[2], self.answers[3], correct_answer, user_answer))  # Save the answer in the database
 
         self.show_alert_dialog(result_message)
-        self.load_question()
 
     def show_alert_dialog(self, text):
-        if not self.dialog:
-            self.dialog = MDDialog(
-                text=text,
-                radius=[20, 7, 20, 7],
-                buttons=[
-                    MDFlatButton(
-                        text="OK",
-                        theme_text_color="Custom",
-                        text_color=self.theme_cls.primary_color,
-                        on_release=self.close_dialog,
-                    )
-                ],
-            )
+        self.dialog = MDDialog(
+            text=text,
+            radius=[20, 7, 20, 7],
+            buttons=[
+                MDFlatButton(
+                    text="OK",
+                    theme_text_color="Custom",
+                    text_color=self.theme_cls.primary_color,
+                    on_release=self.close_dialog,
+                )
+            ],
+        )
         self.dialog.open()
 
     def close_dialog(self, instance):
         if self.dialog:
             self.dialog.dismiss()
+            self.load_question()
     
     def back_to_home(self):
         self.manager.current = 'home'
