@@ -20,14 +20,19 @@
                 id: pie_chart_container
                 size_hint_y: .8
                 pos_hint: {"top":1}
-            BoxLayout:
-                id: bars_chart_container
-                size_hint_y: .8
-                pos_hint: {"top":1}
+            ScrollView:
+                do_scroll_x: True
+                do_scroll_y: False
+                
+                BoxLayout:
+                    id: bars_chart_container
+                    size_hint: None, 1
+                    width: 1000
             Button:
                 size_hint_y: .2
                 text: 'Back'
                 on_release: root.back_to_home()
                 background_normal: ''
-                background_color: colors.DARK_RGBA
+                background_color: colors.MAIN_RGBA
+                color: colors.DARK_RGBA
                 opacity: 1 if self.state == 'normal' else .5
