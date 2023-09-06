@@ -102,7 +102,7 @@ class IntervalScreen(Screen):
                 MDFlatButton(
                     text="OK",
                     theme_text_color="Custom",
-                    text_color='#183e50',
+                    text_color='#8d3448',
                     on_release=self.close_dialog,
                 )
             ],

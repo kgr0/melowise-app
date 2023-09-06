@@ -35,15 +35,36 @@
             background_color: colors.MAIN_RGBA
             opacity: 1 if self.state == 'normal' else .5
             size_hint_y: 0.1
-        Label:
-            text: 'Customize your exercise'
-            color: .788, .521, .517
+        Button:
+            text: ''
+            on_release: root.show_instruction()
+            background_normal: ''
+            color: colors.DARK_RGBA
+            background_color: colors.LIGHT_RGBA
+            opacity: 1 if self.state == 'normal' else .5
             size_hint_y: 0.1
-            font_size: 20
-            bold: True
+            BoxLayout:
+                #pos: self.parent.pos
+                x: self.parent.x + (self.parent.width/2 - self.width/2)
+                y: self.parent.y + (self.parent.height/2 - self.height/2)
+                #size: self.parent.size
+                orientation: 'horizontal'
+                Image:
+                    source: '././assets/instruction.png'
+                    size_hint_x: None
+                    width: 30
+                    pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                Label:
+                    size_hint_x: None
+                    #width: 100
+                    font_size: 20
+                    text: "Instruction"
+                    color: colors.SECONDARY_DARK_RGBA
+                    pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+
         BoxLayout:
             orientation: 'vertical'
-            padding_y:20
+            padding_y: 20
             LabelCheckBox:
                 id: Select_all
                 text:"Select/Unselect all"
@@ -100,6 +121,6 @@
             background_normal: ''
             background_color: colors.SECONDARY_RGBA
             opacity: 1 if self.state == 'normal' else .5
-            size_hint_y: 0.3
+            size_hint_y: 0.2
             font_size: 24
             bold: True
