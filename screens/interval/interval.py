@@ -96,13 +96,13 @@ class IntervalScreen(Screen):
 
     def show_alert_dialog(self, text):
         self.dialog = MDDialog(
-            text=text,
+            text='[color=183e50]' + text + '[/color]',
             radius=[20, 7, 20, 7],
             buttons=[
                 MDFlatButton(
                     text="OK",
                     theme_text_color="Custom",
-                    text_color=self.theme_cls.primary_color,
+                    text_color='#183e50',
                     on_release=self.close_dialog,
                 )
             ],

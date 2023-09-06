@@ -45,11 +45,12 @@ class IntervalSettingsScreen(Screen):
             self.selected_intervals.remove(text)
 
     def go_to_exercise(self):
-        interval_screen = self.manager.get_screen('interval')
-        interval_screen.selected_intervals = self.selected_intervals
-        values.SELECTED_INTERVALS = self.selected_intervals
-        interval_screen.load_question()
-        self.manager.current = 'interval'
+        if len(self.selected_intervals) > 0:
+            interval_screen = self.manager.get_screen('interval')
+            interval_screen.selected_intervals = self.selected_intervals
+            values.SELECTED_INTERVALS = self.selected_intervals
+            interval_screen.load_question()
+            self.manager.current = 'interval'
 
     def back_to_home(self):
         self.manager.current = 'home'

@@ -27,6 +27,26 @@ Builder.load_file('screens/interval/interval_settings/interval_settings.kv')
 Builder.load_file('screens/statistics/statistics.kv')
 Builder.load_file('screens/start/start.kv')
 
+colors = {
+    "Teal": {
+        "200": "#c2e8d1",
+        "500": "#c2e8d1",
+        "700": "#c2e8d1",
+    },
+    "Red": {
+        "200": "#fea6b4",
+        "500": "#fea6b4",
+        "700": "#fea6b4",
+    },
+    "Light": {
+        "StatusBar": "#c2e8d1",
+        "AppBar": "#c2e8d1",
+        "Background": "#e1f7e9",
+        "CardsDialogs": "#fea6b4",
+        "FlatButtonDown": "#CCCCCC",
+    },
+}
+
 class MyApp(MDApp):
     def build(self):
         sm = ScreenManager()
@@ -36,7 +56,10 @@ class MyApp(MDApp):
         sm.add_widget(StatisticsScreen(name='statistics'))
         sm.add_widget(StartScreen(name="start_screen"))
         sm.current = "start_screen"
-        self.theme_cls.primary_palette = "Purple"
+        self.theme_cls.colors = colors
+        self.theme_cls.primary_palette = "Teal"
+        self.theme_cls.accent_palette = "Red"
+        self.theme_cls.theme_style = "Light"
         Window.size = (360   , 780  )
         
         self.title = 'Melowise'

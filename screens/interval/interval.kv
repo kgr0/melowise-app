@@ -5,6 +5,7 @@
             on_release: root.back_to_home()
             background_normal: ''
             background_color: colors.MAIN_RGBA
+            color: colors.DARK_RGBA
             opacity: 1 if self.state == 'normal' else .5
             size_hint_y: 0.1
         Button:
@@ -13,7 +14,7 @@
             size_hint_y: 0.5
             pos_hint: {'center_x': 0.5}
             background_normal: ''
-            background_color: colors.LIGHT_RGBA
+            background_color: colors.WHITE_RGBA
             opacity: 1 if self.state == 'normal' else .5
             
             # anchor_x: 'center'
@@ -42,6 +43,7 @@
                     on_release: root.submit_answer(root.answers[0])
                     background_normal: ''
                     background_color: colors.MAIN_RGBA
+                    color: colors.DARK_RGBA
                     opacity: 1 if self.state == 'normal' else .5
                 Button:
                     id: answer_2
@@ -51,6 +53,7 @@
                     on_release: root.submit_answer(root.answers[1]) 
                     background_normal: ''
                     background_color: colors.MAIN_RGBA
+                    color: colors.DARK_RGBA
                     opacity: 1 if self.state == 'normal' else .5
                 Button:
                     id: answer_3
@@ -60,6 +63,7 @@
                     on_release: root.submit_answer(root.answers[2]) 
                     background_normal: ''
                     background_color: colors.MAIN_RGBA
+                    color: colors.DARK_RGBA
                     opacity: 1 if self.state == 'normal' else .5
                 Button:
                     id: answer_4
@@ -69,4 +73,5 @@
                     on_release: root.submit_answer(root.answers[3])
                     background_normal: ''
                     background_color: colors.MAIN_RGBA
+                    color: colors.DARK_RGBA
                     opacity: 1 if self.state == 'normal' else .5

@@ -34,7 +34,7 @@ class StatisticsScreen(Screen, FloatLayout):
             len([obj for obj in answers if obj.user_answer == obj.correct_answer]),
             len([obj for obj in answers if obj.user_answer != obj.correct_answer])
         ]       
-        colors = ['#A4AA7E', '#D07F89']
+        colors = ['#7abd7e', '#ff6961']
         fig, ax = plt.subplots()
         ax.pie(values, labels=labels, colors=colors, autopct='%1.1f%%', textprops={'color':"w"})
         ax.set_title('Pie Chart')
@@ -64,9 +64,14 @@ class StatisticsScreen(Screen, FloatLayout):
 
         fig, ax = plt.subplots(layout='constrained')
 
+
+        colors = {
+            'Correct': '#7abd7e',  # This is green in hex
+            'Wrong': '#ff6961'     # This is red in hex
+        }
         for attribute, measurement in penguin_means.items():
             offset = width * multiplier
-            rects = ax.bar(x + offset, measurement, width, label=attribute)
+            rects = ax.bar(x + offset, measurement, width, label=attribute, color=colors[attribute])
             ax.bar_label(rects, padding=3)
             multiplier += 1
 

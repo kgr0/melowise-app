@@ -5,12 +5,17 @@
         orientation: 'vertical'
         Label:
             text: 'Statistics Screen'
-            font_size: 14
+            font_size: 24
             color: 0.25, 0.25, 0.65
             size_hint_y: .2
         BoxLayout:
             size_hint_y: .8
             orientation: 'vertical'
+            Label:
+                text: 'Interval'
+                font_size: 20
+                color: 0.25, 0.25, 0.65
+                size_hint_y: .2
             BoxLayout:
                 id: pie_chart_container
                 size_hint_y: .8
@@ -24,5 +29,5 @@
                 text: 'Back'
                 on_release: root.back_to_home()
                 background_normal: ''
-                background_color: colors.MAIN_RGBA
+                background_color: colors.DARK_RGBA
                 opacity: 1 if self.state == 'normal' else .5

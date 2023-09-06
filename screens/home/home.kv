@@ -12,8 +12,8 @@
         orientation: 'vertical'
         Label:
             text: "Choose an exercise"
-            font_size: 64
-            color: colors.MAIN_RGBA
+            font_size: 24
+            color: colors.DARK_RGBA
             size_hint_y: 0.4
         Button:
             text: "Interval"
@@ -22,7 +22,7 @@
             on_press: root.switch_screen('interval_settings')
             background_normal: ''
             background_color: colors.MAIN_RGBA
-            color: colors.LIGHT_RGBA
+            color: colors.DARK_RGBA
             opacity: 1 if self.state == 'normal' else .5
             allow_stretch: True
             size_hint_y: 0.3
@@ -50,7 +50,7 @@
                     #width: 100
                     font_size: 20
                     text: "Statistics"
-                    color: colors.LIGHT_RGBA
+                    color: colors.DARK_RGBA
                     pos_hint: {'center_x': 0.5, 'center_y': 0.5}
 
 # <HomeScreen>:

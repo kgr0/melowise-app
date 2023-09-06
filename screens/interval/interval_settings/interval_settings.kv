@@ -1,9 +1,10 @@
 <CustLabel@ButtonBehavior+Label>:
-    color: .761, .190, .810, 1
+    color: .09, .27, .368, 1
     size_hint_x: .80
-    font_size:14
+    font_size: 14
 <CustCheckBox@CheckBox>:
-    color:.294, .761, .623
+    color:.788, .521, .517
+    color: colors.SECONDARY_RGBA
     size_hint_x: .20
 <LabelCheckBox@BoxLayout>:
     text: ''
@@ -30,12 +31,14 @@
             text: 'Back'
             on_release: root.back_to_home()
             background_normal: ''
+            color: colors.DARK_RGBA
             background_color: colors.MAIN_RGBA
             opacity: 1 if self.state == 'normal' else .5
             size_hint_y: 0.3
         Button:
             text: 'Start'
             on_release: root.go_to_exercise()
+            color: colors.DARK_RGBA
             background_normal: ''
             background_color: colors.MAIN_RGBA
             opacity: 1 if self.state == 'normal' else .5
