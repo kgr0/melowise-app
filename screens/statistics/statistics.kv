@@ -1,21 +1,30 @@
 # statistics.kv
 
 <StatisticsScreen>:
+    canvas.before:
+        Color:
+            rgba: (.788, .521, .517,1)
+        Rectangle:
+            pos: self.pos
+            size: self.size
     BoxLayout:
         orientation: 'vertical'
         Label:
-            text: 'Statistics Screen'
+            text: 'Statistics'
             font_size: 24
-            color: 0.25, 0.25, 0.65
-            size_hint_y: .2
+            color: 1, 1, 1
+            size_hint_y: .1
+            bold: True
         BoxLayout:
-            size_hint_y: .8
+            size_hint_y: .9
             orientation: 'vertical'
-            Label:
-                text: 'Interval'
-                font_size: 20
-                color: 0.25, 0.25, 0.65
+            BoxLayout:
                 size_hint_y: .2
+                Label:
+                    text: 'Interval'
+                    font_size: 20
+                    color: 1, 1, 1
+                    bold: True
             BoxLayout:
                 id: pie_chart_container
                 size_hint_y: .8
@@ -29,7 +38,7 @@
                     size_hint: None, 1
                     width: 1000
             Button:
-                size_hint_y: .2
+                size_hint_y: .1
                 text: 'Back'
                 on_release: root.back_to_home()
                 background_normal: ''

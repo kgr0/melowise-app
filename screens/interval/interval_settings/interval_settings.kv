@@ -34,61 +34,72 @@
             color: colors.DARK_RGBA
             background_color: colors.MAIN_RGBA
             opacity: 1 if self.state == 'normal' else .5
-            size_hint_y: 0.3
+            size_hint_y: 0.1
+        Label:
+            text: 'Customize your exercise'
+            color: .788, .521, .517
+            size_hint_y: 0.1
+            font_size: 20
+            bold: True
+        BoxLayout:
+            orientation: 'vertical'
+            padding_y:20
+            LabelCheckBox:
+                id: Select_all
+                text:"Select/Unselect all"
+                size_hint_y: 0.2
+            GridLayout:
+                cols: 2
+                rows: 7
+                LabelCheckBox:
+                    id: Unison
+                    text:"Unison"
+                LabelCheckBox:
+                    id: Minor second
+                    text:"Minor second"
+                LabelCheckBox:
+                    id: Major second
+                    text:"Major second"
+                LabelCheckBox:
+                    id: Minor third
+                    text:"Minor third"
+                LabelCheckBox:
+                    id: Major third
+                    text:"Major third"
+                LabelCheckBox:
+                    id: Perfect fourth
+                    text:"Perfect fourth"
+                LabelCheckBox:
+                    id: Augmented fourth
+                    text:"Augmented fourth"
+                LabelCheckBox:
+                    id: Diminished fifth
+                    text:"Diminished fifth"
+                LabelCheckBox:
+                    id: Perfect fifth
+                    text:"Perfect fifth"
+                LabelCheckBox:
+                    id: Minor sixth
+                    text:"Minor sixth"
+                LabelCheckBox:
+                    id: Major sixth
+                    text:"Major sixth"
+                LabelCheckBox:
+                    id: Minor seventh
+                    text:"Minor seventh"
+                LabelCheckBox:
+                    id: Major seventh
+                    text:"Major seventh"
+                LabelCheckBox:
+                    id: Octave
+                    text:"Octave"
         Button:
             text: 'Start'
             on_release: root.go_to_exercise()
-            color: colors.DARK_RGBA
+            color: colors.WHITE_RGBA
             background_normal: ''
-            background_color: colors.MAIN_RGBA
+            background_color: colors.SECONDARY_RGBA
             opacity: 1 if self.state == 'normal' else .5
             size_hint_y: 0.3
-        LabelCheckBox:
-            id: Select_all
-            text:"Select/Unselect all"
-            size_hint_y: 0.4
-        GridLayout:
-            cols: 2
-            rows: 7
-            LabelCheckBox:
-                id: Unison
-                text:"Unison"
-            LabelCheckBox:
-                id: Minor second
-                text:"Minor second"
-            LabelCheckBox:
-                id: Major second
-                text:"Major second"
-            LabelCheckBox:
-                id: Minor third
-                text:"Minor third"
-            LabelCheckBox:
-                id: Major third
-                text:"Major third"
-            LabelCheckBox:
-                id: Perfect fourth
-                text:"Perfect fourth"
-            LabelCheckBox:
-                id: Augmented fourth
-                text:"Augmented fourth"
-            LabelCheckBox:
-                id: Diminished fifth
-                text:"Diminished fifth"
-            LabelCheckBox:
-                id: Perfect fifth
-                text:"Perfect fifth"
-            LabelCheckBox:
-                id: Minor sixth
-                text:"Minor sixth"
-            LabelCheckBox:
-                id: Major sixth
-                text:"Major sixth"
-            LabelCheckBox:
-                id: Minor seventh
-                text:"Minor seventh"
-            LabelCheckBox:
-                id: Major seventh
-                text:"Major seventh"
-            LabelCheckBox:
-                id: Octave
-                text:"Octave"
+            font_size: 24
+            bold: True

@@ -12,9 +12,14 @@
         orientation: 'vertical'
         Label:
             text: "Choose an exercise"
-            font_size: 24
-            color: colors.DARK_RGBA
-            size_hint_y: 0.4
+            font_size: 30
+            color: colors.SECONDARY_RGBA
+            bold: True
+            size_hint_y: 0.3
+            text_size: self.size
+            halign: 'center'
+            valign: 'middle'
+            
         Button:
             text: "Interval"
             font_size: 32
@@ -25,7 +30,7 @@
             color: colors.DARK_RGBA
             opacity: 1 if self.state == 'normal' else .5
             allow_stretch: True
-            size_hint_y: 0.3
+            size_hint_y: 0.4
             
         Button:
             on_release: root.go_to_statistics()
