@@ -1,6 +1,8 @@
 from kivy.lang import Builder
 from kivy.uix.screenmanager import ScreenManager
 import kivy
+from screens.chord.chord import ChordScreen
+from screens.chord.chord_settings.chord_settings import ChordSettingsScreen
 from screens.home.home import HomeScreen
 from screens.interval.interval import IntervalScreen
 from screens.interval.interval_settings.interval_settings import IntervalSettingsScreen
@@ -24,6 +26,8 @@ kivy.require('1.9.0')
 Builder.load_file('screens/home/home.kv')
 Builder.load_file('screens/interval/interval.kv')
 Builder.load_file('screens/interval/interval_settings/interval_settings.kv')
+Builder.load_file('screens/chord/chord.kv')
+Builder.load_file('screens/chord/chord_settings/chord_settings.kv')
 Builder.load_file('screens/statistics/statistics.kv')
 Builder.load_file('screens/start/start.kv')
 
@@ -53,6 +57,8 @@ class MyApp(MDApp):
         sm.add_widget(HomeScreen(name='home'))
         sm.add_widget(IntervalScreen(name='interval'))
         sm.add_widget(IntervalSettingsScreen(name='interval_settings'))
+        sm.add_widget(ChordScreen(name='chord'))
+        sm.add_widget(ChordSettingsScreen(name='chord_settings'))
         sm.add_widget(StatisticsScreen(name='statistics'))
         sm.add_widget(StartScreen(name="start_screen"))
         sm.current = "start_screen"

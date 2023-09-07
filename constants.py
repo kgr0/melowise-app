@@ -15,6 +15,23 @@ INTERVALS = {
     "Octave": "P8"
 }
 
+CHORDS = {
+    "Unison": "P1",
+    "Minor second": "m2",
+    "Major second": "M2",
+    "Minor third": "m3",
+    "Major third": "M3",
+    "Perfect fourth": "P4",
+    "Augmented fourth": "A4",
+    "Diminished fifth": "d5",
+    "Perfect fifth": "P5",
+    "Minor sixth": "m6",
+    "Major sixth": "M6",
+    "Minor seventh": "m7",
+    "Major seventh": "M7",
+    "Octave": "P8"
+}
+
 PITCHES = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#']#, 'B', 'D-', 'E-', 'G-', 'A-', 'B-']
 
 # PITCHES = ['C0', 'C#0', 'D0', 'D#0', 'E0', 'F0', 'F#0', 'G0', 'G#0', 'A0', 'A#0', 'B0', 

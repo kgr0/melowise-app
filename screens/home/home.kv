@@ -30,7 +30,19 @@
             color: colors.DARK_RGBA
             opacity: 1 if self.state == 'normal' else .5
             allow_stretch: True
-            size_hint_y: 0.4
+            size_hint_y: 0.2
+        
+        Button:
+            text: "Chords"
+            font_size: 32
+            size: 100, 50
+            on_press: root.switch_screen('chord_settings')
+            background_normal: ''
+            background_color: colors.MAIN_RGBA
+            color: colors.DARK_RGBA
+            opacity: 1 if self.state == 'normal' else .5
+            allow_stretch: True
+            size_hint_y: 0.2
             
         Button:
             on_release: root.go_to_statistics()

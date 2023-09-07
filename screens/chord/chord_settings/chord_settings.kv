@@ -1,0 +1,126 @@
+<CustLabel2@ButtonBehavior+Label>:
+    color: .09, .27, .368, 1
+    size_hint_x: .80
+    font_size: 14
+<CustCheckBox2@CheckBox>:
+    color:.788, .521, .517
+    color: colors.SECONDARY_RGBA
+    size_hint_x: .20
+<LabelCheckBox2@BoxLayout>:
+    text: ''
+    active: True
+    CustCheckBox2:
+        id: cb
+        active: root.active
+        on_active: app.root.current_screen.select_chords(self, self.active, root.text)
+
+    CustLabel2:
+        on_press: cb._do_press()
+        text: root.text
+
+<ChordSettingsScreen>:
+    # canvas.before:
+    #     Color:
+    #         rgba: 1, 1, 1, 1
+    #     Rectangle:
+    #         pos: self.pos
+    #         size: self.size
+    BoxLayout:
+        orientation: 'vertical'
+        Button:
+            text: 'Back'
+            on_release: root.back_to_home()
+            background_normal: ''
+            color: colors.DARK_RGBA
+            background_color: colors.MAIN_RGBA
+            opacity: 1 if self.state == 'normal' else .5
+            size_hint_y: 0.1
+        Button:
+            text: ''
+            on_release: root.show_instruction()
+            background_normal: ''
+            color: colors.DARK_RGBA
+            background_color: colors.LIGHT_RGBA
+            opacity: 1 if self.state == 'normal' else .5
+            size_hint_y: 0.1
+            BoxLayout:
+                #pos: self.parent.pos
+                x: self.parent.x + (self.parent.width/2 - self.width/2)
+                y: self.parent.y + (self.parent.height/2 - self.height/2)
+                #size: self.parent.size
+                orientation: 'horizontal'
+                Image:
+                    source: '././assets/instruction.png'
+                    size_hint_x: None
+                    width: 30
+                    pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                Label:
+                    size_hint_x: None
+                    #width: 100
+                    font_size: 20
+                    text: "Instruction"
+                    color: colors.SECONDARY_DARK_RGBA
+                    pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+
+        BoxLayout:
+            orientation: 'vertical'
+            padding_y: 20
+            LabelCheckBox2:
+                id: Select_all2
+                text:"Select/Unselect all"
+                size_hint_y: 0.2
+            GridLayout:
+                cols: 2
+                rows: 7
+                LabelCheckBox2:
+                    id: Unison2
+                    text:"Unison"
+                LabelCheckBox2:
+                    id: Minor second2
+                    text:"Minor second"
+                LabelCheckBox2:
+                    id: Major second2
+                    text:"Major second"
+                LabelCheckBox2:
+                    id: Minor third2
+                    text:"Minor third"
+                LabelCheckBox2:
+                    id: Major third2
+                    text:"Major third"
+                LabelCheckBox2:
+                    id: Perfect fourth2
+                    text:"Perfect fourth"
+                LabelCheckBox2:
+                    id: Augmented fourth2
+                    text:"Augmented fourth"
+                LabelCheckBox2:
+                    id: Diminished fifth2
+                    text:"Diminished fifth"
+                LabelCheckBox2:
+                    id: Perfect fifth2
+                    text:"Perfect fifth"
+                LabelCheckBox2:
+                    id: Minor sixth2
+                    text:"Minor sixth"
+                LabelCheckBox2:
+                    id: Major sixth2
+                    text:"Major sixth"
+                LabelCheckBox2:
+                    id: Minor seventh2
+                    text:"Minor seventh"
+                LabelCheckBox2:
+                    id: Major seventh2
+                    text:"Major seventh"
+                LabelCheckBox2:
+                    id: Octave
+                    text:"Octave"
+        Button:
+            text: 'Start'
+            on_release: root.go_to_exercise()
+            color: colors.WHITE_RGBA
+            background_normal: ''
+            background_color: colors.SECONDARY_RGBA
+            opacity: 1 if self.state == 'normal' else .5
+            size_hint_y: 0.2
+            font_size: 24
+            bold: True
