@@ -1,0 +1,65 @@
+# theory.kv
+
+<TheoryScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        Button:
+            text: 'Relative pitch'
+            on_release: root.show_instruction()
+            background_normal: ''
+            color: colors.SECONDARY_DARK_RGBA
+            background_color: colors.LIGHT_RGBA
+            opacity: 1 if self.state == 'normal' else .5
+            size_hint_y: 0.2
+            bold: True
+            font_name: 'Cambria'
+            font_size: 30
+        Button:
+            text: 'Notes'
+            on_release: root.show_instruction()
+            background_normal: ''
+            color: colors.SECONDARY_DARK_RGBA
+            background_color: colors.LIGHT_RGBA
+            opacity: 1 if self.state == 'normal' else .5
+            size_hint_y: 0.2
+            bold: True
+            font_name: 'Cambria'
+            font_size: 30
+        Button:
+            text: 'Intervals'
+            on_release: root.show_instruction()
+            background_normal: ''
+            color: colors.SECONDARY_DARK_RGBA
+            background_color: colors.LIGHT_RGBA
+            opacity: 1 if self.state == 'normal' else .5
+            size_hint_y: 0.2
+            bold: True
+            font_name: 'Cambria'
+            font_size: 30
+        Button:
+            text: 'Chords'
+            on_release: root.show_instruction()
+            background_normal: ''
+            color: colors.SECONDARY_DARK_RGBA
+            background_color: colors.LIGHT_RGBA
+            opacity: 1 if self.state == 'normal' else .5
+            size_hint_y: 0.2
+            bold: True
+            font_name: 'Cambria'
+            font_size: 30
+        Button:
+            text: 'Rhytm'
+            on_release: root.show_instruction()
+            background_normal: ''
+            color: colors.SECONDARY_DARK_RGBA
+            background_color: colors.LIGHT_RGBA
+            opacity: 1 if self.state == 'normal' else .5
+            size_hint_y: 0.2
+            bold: True
+            font_name: 'Cambria'
+            font_size: 30
+        Button:
+            text: ''
+            background_color: colors.LIGHT_RGBA
+            size_hint_y: 0.5
+        

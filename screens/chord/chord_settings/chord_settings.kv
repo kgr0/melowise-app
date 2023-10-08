@@ -1,30 +1,32 @@
 <CustLabel2@ButtonBehavior+Label>:
     color: .09, .27, .368, 1
-    size_hint_x: .80
-    font_size: 14
-<CustCheckBox2@CheckBox>:
-    color:.788, .521, .517
-    color: colors.SECONDARY_RGBA
-    size_hint_x: .20
-<LabelCheckBox2@BoxLayout>:
-    text: ''
-    active: True
-    CustCheckBox2:
-        id: cb
-        active: root.active
-        on_active: app.root.current_screen.select_chords(self, self.active, root.text)
+    size_hint_x: .8
+    font_size: 16
 
+<CustRadioButton@CheckBox>:
+    color: [.788, .521, .517]
+    group: "custom_radios"
+    size_hint_x: .2
+    allow_no_selection: False
+
+<LabelRadioButton2@BoxLayout>:
+    text: ''
+    state: 'normal'
+    description: ''
+    CustRadioButton:
+        id: rb
+        state: root.state
+        #on_state: app.root.current_screen.select_chords(self, self.state == 'down', root.text)
+    
     CustLabel2:
-        on_press: cb._do_press()
+        on_press: rb._do_press()
         text: root.text
+    # Label:
+    #     text: root.description
+    #     font_size: 16
+    #     color: colors.SECONDARY_DARK_RGBA
 
 <ChordSettingsScreen>:
-    # canvas.before:
-    #     Color:
-    #         rgba: 1, 1, 1, 1
-    #     Rectangle:
-    #         pos: self.pos
-    #         size: self.size
     BoxLayout:
         orientation: 'vertical'
         Button:
@@ -65,55 +67,21 @@
         BoxLayout:
             orientation: 'vertical'
             padding_y: 20
-            LabelCheckBox2:
-                id: Select_all2
-                text:"Select/Unselect all"
-                size_hint_y: 0.2
-            GridLayout:
-                cols: 2
-                rows: 7
-                LabelCheckBox2:
-                    id: Unison2
-                    text:"Unison"
-                LabelCheckBox2:
-                    id: Minor second2
-                    text:"Minor second"
-                LabelCheckBox2:
-                    id: Major second2
-                    text:"Major second"
-                LabelCheckBox2:
-                    id: Minor third2
-                    text:"Minor third"
-                LabelCheckBox2:
-                    id: Major third2
-                    text:"Major third"
-                LabelCheckBox2:
-                    id: Perfect fourth2
-                    text:"Perfect fourth"
-                LabelCheckBox2:
-                    id: Augmented fourth2
-                    text:"Augmented fourth"
-                LabelCheckBox2:
-                    id: Diminished fifth2
-                    text:"Diminished fifth"
-                LabelCheckBox2:
-                    id: Perfect fifth2
-                    text:"Perfect fifth"
-                LabelCheckBox2:
-                    id: Minor sixth2
-                    text:"Minor sixth"
-                LabelCheckBox2:
-                    id: Major sixth2
-                    text:"Major sixth"
-                LabelCheckBox2:
-                    id: Minor seventh2
-                    text:"Minor seventh"
-                LabelCheckBox2:
-                    id: Major seventh2
-                    text:"Major seventh"
-                LabelCheckBox2:
-                    id: Octave
-                    text:"Octave"
+            BoxLayout:
+                orientation: 'vertical'
+                LabelRadioButton2:
+                    id: Beginner
+                    text:"Beginner Level"
+                    description: "Major Triad\nMinor Triad\nDiminished Triad\nAugmented Triad"
+                    active: True
+                LabelRadioButton2:
+                    id: Intermediate
+                    text:"Intermediate Level"
+                    description: "Major Triad\nMinor Triad\nDiminished Triad\nAugmented Triad"
+                LabelRadioButton2:
+                    id: Advanced
+                    text:"Advanced Level"
+                    description: "Major Triad\nMinor Triad\nDiminished Triad\nAugmented Triad"
         Button:
             text: 'Start'
             on_release: root.go_to_exercise()

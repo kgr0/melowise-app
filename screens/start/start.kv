@@ -7,7 +7,16 @@
         Rectangle:
             pos: self.pos
             size: self.size
-    Label:
-        text: 'Melowise'
-        color:colors.DARK_RGBA
-        font_size: 30
+    BoxLayout:
+        orientation: 'vertical'
+        Image:
+            source: '././assets/logo.png'
+            size_hint_x: None
+            width: 150
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+        Label:
+            text: 'melowise'
+            color:colors.LOGO_RGBA
+            font_size: 30
+            size_hint_y: 0.7
+            font_name: 'Cambria'

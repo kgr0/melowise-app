@@ -10,3 +10,6 @@ class HomeScreen(Screen):
     
      def go_to_statistics(self):
         self.manager.current = 'statistics'
+
+     def go_to_theory(self):
+         self.manager.current = 'theory'
