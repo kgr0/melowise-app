@@ -36,12 +36,11 @@ def build_interval(root_note, interval_name):
 
     # Return the interval as a tuple containing the root note and second note
 
+    print(root_note, second_pitch, interval_name)
     return str(second_pitch)
 
 def generate(root_note, interval):
     second_note = build_interval(root_note, interval)
-
-
 
     right_hand_notes = [root_note, second_note]
     right_hand_duration = [1, 1]
@@ -54,6 +53,27 @@ def generate(root_note, interval):
 
 
     right_hand = utils.get_song_data(right_hand_notes, right_hand_duration, 2,
+                                    factor, length, decay, sustain_level)
+    factor = [0.73, 0.16, 0.06, 0.01, 0.02, 0.01  , 0.01]
+    length = [0.01, 0.29, 0.6, 0.1]
+    decay = [0.05,0.02,0.005,0.1]
+
+    data = right_hand
+    data = data * (4096/np.max(data))
+    wavfile.write('./data/sound_1.wav', 44100, data.astype(np.int16))
+
+def generate_chord(notes):
+    right_hand_notes = notes
+    right_hand_duration = [1] * len(notes)
+
+    factor = [0.68, 0.26, 0.03, 0.  , 0.03]
+    length = [0.01, 0.6, 0.29, 0.1]
+    decay = [0.05,0.02,0.005,0.1]
+    sustain_level = 0.1
+
+
+
+    right_hand = utils.get_song_data(right_hand_notes, right_hand_duration, len(notes),
                                     factor, length, decay, sustain_level)
     factor = [0.73, 0.16, 0.06, 0.01, 0.02, 0.01  , 0.01]
     length = [0.01, 0.29, 0.6, 0.1]

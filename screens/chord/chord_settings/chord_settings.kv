@@ -16,15 +16,15 @@
     CustRadioButton:
         id: rb
         state: root.state
-        #on_state: app.root.current_screen.select_chords(self, self.state == 'down', root.text)
+        on_state: app.root.current_screen.select_chords(self, root.text)
     
     CustLabel2:
         on_press: rb._do_press()
         text: root.text
-    # Label:
-    #     text: root.description
-    #     font_size: 16
-    #     color: colors.SECONDARY_DARK_RGBA
+    Label:
+        text: root.description
+        font_size: 16
+        color: colors.SECONDARY_DARK_RGBA
 
 <ChordSettingsScreen>:
     BoxLayout:
@@ -72,16 +72,16 @@
                 LabelRadioButton2:
                     id: Beginner
                     text:"Beginner Level"
-                    description: "Major Triad\nMinor Triad\nDiminished Triad\nAugmented Triad"
+                    description: "Major Triad\nMinor Triad"
                     active: True
                 LabelRadioButton2:
                     id: Intermediate
                     text:"Intermediate Level"
-                    description: "Major Triad\nMinor Triad\nDiminished Triad\nAugmented Triad"
+                    description: "Major 7\nMinor 7\nDominant 7"
                 LabelRadioButton2:
                     id: Advanced
                     text:"Advanced Level"
-                    description: "Major Triad\nMinor Triad\nDiminished Triad\nAugmented Triad"
+                    description: "Major 9\nMinor 9\nDominant 9 \nDiminished 7\nAugmented 7"
         Button:
             text: 'Start'
             on_release: root.go_to_exercise()

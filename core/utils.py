@@ -18,20 +18,37 @@ def get_piano_notes():
 
     '''
     
-    # White keys are in Uppercase and black keys (sharps) are in lowercase
-    #octave = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'] 
-    octave = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B']# 'D-', 'E-', 'G-', 'A-', 'B-']
+    # Sharp - '#', bemol - '-'
+    basic_octave = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#','B']
+    duplicates = ['B#', 'D-', '', 'E-', 'F-', 'E#', 'G-', '', 'A-', '', 'B-', 'C-']
     base_freq = 440 #Frequency of Note A4
-    keys = np.array([x+str(y) for y in range(0,9) for x in octave])
+    keys = np.array([x+str(y) for y in range(0,9) for x in basic_octave])
     # Trim to standard 88 keys
     start = np.where(keys == 'A0')[0][0]
     end = np.where(keys == 'C8')[0][0]
     keys = keys[start:end+1]
-    
-    note_freqs = dict(zip(keys, [2**((n+1-49)/12)*base_freq for n in range(len(keys))]))
-
+    note_freqs = dict(zip(keys, [2**((n+1-49)/12)*base_freq for n in
+    range(len(keys))]))
     note_freqs[''] = 0.0 # stop
-    return note_freqs
+    result = dict()
+    for i in range(1, 8):
+        for oc, flat in zip(basic_octave, duplicates):
+            try:
+                result[oc + str(i)] = note_freqs[oc + str(i)]
+                if flat:
+                    if flat == 'b#':
+                        key = flat + str(i-1)
+                        result[key] = note_freqs[oc + str(i)]
+                    elif flat == 'c-':
+                        key = flat + str(i+1)
+                        result[key] = note_freqs[oc + str(i)]
+                    else:
+                        key = flat + str(i)
+                        result[key] = note_freqs[oc + str(i)]
+            except KeyError:
+                print("Error " + str(oc + str(i)))
+    return result
+
 
 def get_sine_wave(frequency, duration, sample_rate=44100, amplitude=4096):
     '''

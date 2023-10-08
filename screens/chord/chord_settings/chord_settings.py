@@ -16,21 +16,37 @@ class CustomBoxLayout(RecycleBoxLayout):
         
 class ChordSettingsScreen(Screen):
 
+    level = 1
+
     selected_chords = [
-        "Unison",
-        "Minor second",
-        "Major second",
-        "Minor third",
-        "Major third",
-        "Perfect fourth",
-        "Augmented fourth",
-        "Diminished fifth",
-        "Perfect fifth",
-        "Minor sixth",
-        "Major sixth",
-        "Minor seventh",
-        "Major seventh",
-        "Octave"
+        {
+            'C Major': ['C4', 'E4', 'G4'],
+            'D Major': ['D4', 'F#4', 'A4'],
+            'E Major': ['E4', 'G#4', 'B4'],
+            'A Major': ['A4', 'C#5', 'E5'],
+            'G Major': ['G4', 'B4', 'D5'],
+            'A Minor': ['A4', 'C5', 'E5'],
+            'D Minor': ['D4', 'F4', 'A4'],
+            'E Minor': ['E4', 'G4', 'B4'],
+            'sample': ['E4', 'G-4', 'B4']
+        },
+        {
+            'F Major 7': ['F4', 'A4', 'C5', 'E5'],
+            'B Minor 7': ['B4', 'D5', 'F#5', 'A5'],
+            'C Dominant 7': ['C4', 'E4', 'G4', 'B-4'],
+            'E Minor 7': ['E4', 'G4', 'B4', 'D5'],
+            'G Major 7': ['G4', 'B4', 'D5', 'F#5'],
+            'D Dominant 7': ['D4', 'F#4', 'A4', 'C5'],
+        },
+        {
+            'A Minor 9': ['A4', 'C5', 'E5', 'G5', 'B5'],
+            'D Major 9': ['D4', 'F#4', 'A4', 'C#5', 'E5'],
+            'B Dominant 9': ['B3', 'D#4', 'F#4', 'A4', 'C5'],
+            'G Minor 9': ['G3', 'B-3', 'D4', 'F4', 'A4'],
+            'F# Diminished 7 ': ['F#4', 'A4', 'C5', 'E-5'],
+            'C# Augmented 7': ['C#4', 'E#4', 'G#4', 'B4'],
+            'E Major 9': ['E4', 'G#4', 'B4', 'D#5', 'F#5'],
+        }
     ]
 
     dialog = None
@@ -38,23 +54,28 @@ class ChordSettingsScreen(Screen):
     def __init__(self, **kwargs):
         super(ChordSettingsScreen, self).__init__(**kwargs)
 
-    def select_chords(self, instance, value, text):
-        if text == 'Select/Unselect all':
-            for chord in constants.CHORDS.keys():
-                self.ids[chord].active = value
-            return
-        if value == True:
-            self.selected_chords.append(text)
+    def select_chords(self, instance, text):
+        if(text == 'Beginner Level'):
+            self.level = 1
+        elif(text == 'Intermediate Level'):
+            self.level = 2
         else:
-            self.selected_chords.remove(text)
+            self.level = 3
+        # if text == 'Select/Unselect all':
+        #     for chord in constants.CHORDS.keys():
+        #         self.ids[chord].active = value
+        #     return
+        # if value == True:
+        #     self.selected_chords.append(text)
+        # else:
+        #     self.selected_chords.remove(text)
 
     def go_to_exercise(self):
-        if len(self.selected_chords) > 0:
-            chord_screen = self.manager.get_screen('chord')
-            chord_screen.selected_chords = self.selected_chords
-            values.SELECTED_CHORDS = self.selected_chords
-            chord_screen.load_question()
-            self.manager.current = 'chord'
+        chord_screen = self.manager.get_screen('chord')
+        chord_screen.selected_chords = self.selected_chords[self.level-1]
+        values.SELECTED_CHORDS = self.selected_chords[self.level-1]
+        chord_screen.load_question()
+        self.manager.current = 'chord'
 
     def back_to_home(self):
         self.manager.current = 'home'

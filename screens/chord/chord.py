@@ -7,7 +7,7 @@ from db.dtos import QuestionDTO
 import random
 from kivy.properties import StringProperty
 from kivy.core.audio import SoundLoader
-from core.sound_generator import generate
+from core.sound_generator import generate_chord
 import constants
 from . import values
 from kivy.lang import Builder
@@ -46,12 +46,11 @@ class ChordScreen(Screen):
         self.theme_cls = MDApp.get_running_app().theme_cls
 
     def load_question(self):
-        random_key = random.choice(list(values.SELECTED_CHORDS))
-        random_value = constants.CHORDS.get(random_key)
+        random_key = random.choice(list(values.SELECTED_CHORDS.keys()))
+        random_value = values.SELECTED_CHORDS[random_key]
         self.chord = random_key
-        root_note = random.choice(constants.PITCHES) + "4"
-        
-        self.generate_sound(root_note, random_value)
+        print(random_key, random_value)
+        self.generate_sound(random_value)
 
         self.answers = []
         self.answers = self.generate_answers(self.chord)
@@ -62,9 +61,9 @@ class ChordScreen(Screen):
         pass
     
 
-    def generate_sound(self,root_note, chord ):
+    def generate_sound(self, notes):
         try:
-            generate(root_note, chord)
+            generate_chord(notes)
         except KeyError:
             #TODO fix flat problem
             self.load_question()
@@ -77,7 +76,7 @@ class ChordScreen(Screen):
     def generate_answers(self,correct_answer):
         answers = [correct_answer]
         while len(answers) < 4:
-            (random_key, random_value) = random.choice(list(constants.CHORDS.items()))
+            random_key = random.choice(list(values.SELECTED_CHORDS.keys()))
             if random_key not in answers:
                 answers.append(random_key)
         random.shuffle(answers)
