@@ -70,7 +70,7 @@ class MyApp(MDApp):
         self.theme_cls.primary_palette = "Teal"
         self.theme_cls.accent_palette = "Red"
         self.theme_cls.theme_style = "Light"
-        Window.size = (360   , 780  )
+        #Window.size = (360   , 780  )
         
         self.title = 'Melowise'
         self.icon = 'assets/logo.png'

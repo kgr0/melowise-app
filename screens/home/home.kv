@@ -18,7 +18,7 @@
             Image:
                 source: '././assets/logo.png'
                 size_hint_x: None
-                width: 45
+                width: 200
                 pos_hint: {'center_x': 0.5, 'center_y': 0.5}
                 
         # Label:
@@ -52,23 +52,23 @@
             opacity: 1 if self.state == 'normal' else .5
             pos_hint: {'center_x': 0.5}
             size_hint_y: 0.16
-            BoxLayout:
+            FloatLayout:
                 #pos: self.parent.pos
                 x: self.parent.x + (self.parent.width/2 - self.width/2)
                 y: self.parent.y + (self.parent.height/2 - self.height/2)
                 #size: self.parent.size
                 orientation: 'horizontal'
-                Image:
-                    source: '././assets/chord_cr2.png'
-                    size_hint_x: None
-                    width: 25
-                    pos_hint: {'center_x': 0.5, 'center_y': 0.5}
-                    margin: 10
+                # Image:
+                #     source: '././assets/chord_cr2.png'
+                #     size_hint_x: None
+                #     width: 100
+                #     pos_hint: {'center_x': 0, 'center_y': 0.5}
+                #     margin: 10
                 Label:
                     size_hint_x: None
                     #width: 100
-                    font_size: 30
-                    text: "  Intervals"
+                    font_size: 120
+                    text: "Intervals"
                     color: colors.DARK_RGBA
                     pos_hint: {'center_x': 0.5, 'center_y': 0.5}
                     font_name: 'Cambria'
@@ -93,22 +93,22 @@
             opacity: 1 if self.state == 'normal' else .5
             pos_hint: {'center_x': 0.5}
             size_hint_y: 0.16
-            BoxLayout:
+            FloatLayout:
                 #pos: self.parent.pos
                 x: self.parent.x + (self.parent.width/2 - self.width/2)
                 y: self.parent.y + (self.parent.height/2 - self.height/2)
                 #size: self.parent.size
                 orientation: 'horizontal'
-                Image:
-                    source: '././assets/chord_cr.png'
-                    size_hint_x: None
-                    width: 20
-                    pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                # Image:
+                #     source: '././assets/chord_cr.png'
+                #     size_hint_x: None
+                #     width: 80
+                #     pos_hint: {'center_x': 0.5, 'center_y': 0.5}
                 Label:
                     size_hint_x: None
                     #width: 100
-                    font_size: 30
-                    text: "  Chords"
+                    font_size: 120
+                    text: "Chords"
                     color: colors.DARK_RGBA
                     pos_hint: {'center_x': 0.5, 'center_y': 0.5}
                     font_name: 'Cambria'
@@ -125,89 +125,89 @@
         #     opacity: 1 if self.state == 'normal' else .5
         #     allow_stretch: True
         #     size_hint_y: 0.16
-        Button:
-            on_press: root.switch_screen('chord_settings')
-            font_name: 'Cambria'
-            background_normal: ''
-            background_color: colors.MAIN_RGBA
-            opacity: 1 if self.state == 'normal' else .5
-            pos_hint: {'center_x': 0.5}
-            size_hint_y: 0.16
-            BoxLayout:
-                #pos: self.parent.pos
-                x: self.parent.x + (self.parent.width/2 - self.width/2)
-                y: self.parent.y + (self.parent.height/2 - self.height/2)
-                #size: self.parent.size
-                orientation: 'horizontal'
-                Image:
-                    source: '././assets/rhytm_cr.png'
-                    size_hint_x: None
-                    width: 50
-                    pos_hint: {'center_x': 0.5, 'center_y': 0.5}
-                Label:
-                    size_hint_x: None
-                    #width: 100
-                    font_size: 30
-                    text: "  Rhythms"
-                    color: colors.DARK_RGBA
-                    pos_hint: {'center_x': 0.5, 'center_y': 0.5}
-                    font_name: 'Cambria'
+        # Button:
+        #     on_press: root.switch_screen('chord_settings')
+        #     font_name: 'Cambria'
+        #     background_normal: ''
+        #     background_color: colors.MAIN_RGBA
+        #     opacity: 1 if self.state == 'normal' else .5
+        #     pos_hint: {'center_x': 0.5}
+        #     size_hint_y: 0.16
+        #     BoxLayout:
+        #         #pos: self.parent.pos
+        #         x: self.parent.x + (self.parent.width/2 - self.width/2)
+        #         y: self.parent.y + (self.parent.height/2 - self.height/2)
+        #         #size: self.parent.size
+        #         orientation: 'horizontal'
+        #         Image:
+        #             source: '././assets/rhytm_cr.png'
+        #             size_hint_x: None
+        #             width: 50
+        #             pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+        #         Label:
+        #             size_hint_x: None
+        #             #width: 100
+        #             font_size: 30
+        #             text: "  Rhythms"
+        #             color: colors.DARK_RGBA
+        #             pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+        #             font_name: 'Cambria'
             
         Button:
             on_release: root.go_to_statistics()
-            font_name: 'Cambria'
-            background_normal: ''
-            background_color: colors.MAIN_RGBA
-            opacity: 1 if self.state == 'normal' else .5
-            pos_hint: {'center_x': 0.5}
-            size_hint_y: 0.16
-            BoxLayout:
-                #pos: self.parent.pos
-                x: self.parent.x + (self.parent.width/2 - self.width/2)
-                y: self.parent.y + (self.parent.height/2 - self.height/2)
-                #size: self.parent.size
-                orientation: 'horizontal'
-                Image:
-                    source: '././assets/statistics.png'
-                    size_hint_x: None
-                    width: 50
-                    pos_hint: {'center_x': 0.5, 'center_y': 0.5}
-                    #margin: 10
-                Label:
-                    size_hint_x: None
-                    #width: 100
-                    font_size: 30
-                    text: "    Statistics"
-                    color: colors.DARK_RGBA
-                    pos_hint: {'center_x': 0.5, 'center_y': 0.5}
-                    font_name: 'Cambria'
-        Button:
-            on_release: root.go_to_theory()
             font_name: 'Cambria'
             background_normal: ''
             background_color: colors.LIGHT_RGBA
             opacity: 1 if self.state == 'normal' else .5
             pos_hint: {'center_x': 0.5}
             size_hint_y: 0.16
-            BoxLayout:
+            FloatLayout:
                 #pos: self.parent.pos
                 x: self.parent.x + (self.parent.width/2 - self.width/2)
                 y: self.parent.y + (self.parent.height/2 - self.height/2)
                 #size: self.parent.size
                 orientation: 'horizontal'
-                Image:
-                    source: '././assets/books.png'
-                    size_hint_x: None
-                    width: 50
-                    pos_hint: {'center_x': 0.5, 'center_y': 0.5}
                 Label:
                     size_hint_x: None
                     #width: 100
-                    font_size: 30
-                    text: "Theory"
-                    color: colors.SECONDARY_DARK_RGBA
+                    font_size: 120
+                    text: "Statistics"
+                    color: colors.DARK_RGBA
                     pos_hint: {'center_x': 0.5, 'center_y': 0.5}
                     font_name: 'Cambria'
+                # Image:
+                #     source: '././assets/statistics.png'
+                #     size_hint_x: None
+                #     width: 200
+                #     pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                    #margin: 10
+        # Button:
+        #     on_release: root.go_to_theory()
+        #     font_name: 'Cambria'
+        #     background_normal: ''
+        #     background_color: colors.LIGHT_RGBA
+        #     opacity: 1 if self.state == 'normal' else .5
+        #     pos_hint: {'center_x': 0.5}
+        #     size_hint_y: 0.16
+        #     BoxLayout:
+        #         #pos: self.parent.pos
+        #         x: self.parent.x + (self.parent.width/2 - self.width/2)
+        #         y: self.parent.y + (self.parent.height/2 - self.height/2)
+        #         #size: self.parent.size
+        #         orientation: 'horizontal'
+        #         Image:
+        #             source: '././assets/books.png'
+        #             size_hint_x: None
+        #             width: 50
+        #             pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+        #         Label:
+        #             size_hint_x: None
+        #             #width: 100
+        #             font_size: 30
+        #             text: "Theory"
+        #             color: colors.SECONDARY_DARK_RGBA
+        #             pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+        #             font_name: 'Cambria'
 
 # <HomeScreen>:
 #     BoxLayout:

@@ -1,7 +1,7 @@
 <CustLabel@ButtonBehavior+Label>:
     color: .09, .27, .368, 1
     size_hint_x: .80
-    font_size: 14
+    font_size: 28
     font_name: 'Cambria'
 <CustCheckBox@CheckBox>:
     color:.788, .521, .517
@@ -50,15 +50,15 @@
                 y: self.parent.y + (self.parent.height/2 - self.height/2)
                 #size: self.parent.size
                 orientation: 'horizontal'
-                Image:
-                    source: '././assets/instruction.png'
-                    size_hint_x: None
-                    width: 30
-                    pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                # Image:
+                #     source: '././assets/instruction.png'
+                #     size_hint_x: None
+                #     width: 30
+                #     pos_hint: {'center_x': 0.5, 'center_y': 0.5}
                 Label:
                     size_hint_x: None
                     #width: 100
-                    font_size: 20
+                    font_size: 35
                     font_name: 'Cambria'
                     text: "Instruction"
                     color: colors.SECONDARY_DARK_RGBA
@@ -124,6 +124,6 @@
             background_color: colors.SECONDARY_RGBA
             opacity: 1 if self.state == 'normal' else .5
             size_hint_y: 0.2
-            font_size: 24
+            font_size: 125
             font_name: 'Cambria'
             bold: True
